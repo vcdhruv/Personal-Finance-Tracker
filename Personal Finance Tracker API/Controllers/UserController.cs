@@ -16,7 +16,7 @@ namespace Personal_Finance_Tracker_API.Controllers
             _configuration = configuration;
         }
 
-
+        #region Sign Up
         [HttpPost("SignUp")]
         public IActionResult SignUp([FromForm] UserModel user)
         {
@@ -38,8 +38,9 @@ namespace Personal_Finance_Tracker_API.Controllers
                 return Ok(response);
             }
         }
+        #endregion
 
-
+        #region Login
         [HttpPost("Login")]
         public IActionResult Login(string UserName,string Password)
         {
@@ -61,5 +62,6 @@ namespace Personal_Finance_Tracker_API.Controllers
                 return Ok(response);
             }
         }
+        #endregion
     }
 }

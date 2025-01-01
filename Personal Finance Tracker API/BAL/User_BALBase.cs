@@ -27,6 +27,7 @@ namespace Personal_Finance_Tracker_API.BAL
         }
         #endregion
 
+        #region Login
         public bool Login(string UserName, string Password)
         {
             User_DALBase dal_user = new User_DALBase();
@@ -39,5 +40,6 @@ namespace Personal_Finance_Tracker_API.BAL
                 return false;
             }
         }
+        #endregion
     }
 }

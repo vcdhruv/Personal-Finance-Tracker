@@ -34,6 +34,7 @@ namespace Personal_Finance_Tracker_API.DAL
         }
         #endregion
 
+        #region Login
         public bool Login(string UserName , string Password) 
         {
             try
@@ -56,5 +57,6 @@ namespace Personal_Finance_Tracker_API.DAL
                 return false;
             }
         }
+        #endregion
     }
 }
