@@ -61,3 +61,4 @@ E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\n
 E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.pdb
 E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.genruntimeconfig.cache
 E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\ref\Personal Finance Tracker API.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.sourcelink.json

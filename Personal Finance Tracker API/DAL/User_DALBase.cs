@@ -7,6 +7,7 @@ namespace Personal_Finance_Tracker_API.DAL
 {
     public class User_DALBase : DAL_Helpers
     {
+        #region Sign Up Method
         public bool SignUp(UserModel user)
         {
 
@@ -27,6 +28,30 @@ namespace Personal_Finance_Tracker_API.DAL
                 }
             }
             catch (Exception ex) 
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        public bool Login(string UserName , string Password) 
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Users_Login");
+                db.AddInParameter(cmd, "@UserName", DbType.String, UserName);
+                db.AddInParameter(cmd, "@PasswordHash", DbType.String, PasswordHashing.HashPassword(Password));
+                if (Convert.ToBoolean(db.ExecuteNonQuery(cmd)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
             {
                 return false;
             }

@@ -16,18 +16,41 @@ namespace Personal_Finance_Tracker_API.Controllers
             _configuration = configuration;
         }
 
-        [AllowAnonymous]
-        [HttpPost]
+
+        [HttpPost("SignUp")]
         public IActionResult SignUp([FromForm] UserModel user)
         {
             User_BALBase user_BALBase = new User_BALBase();
             bool newUser = user_BALBase.SignUp(user);
-            Dictionary<string,dynamic> response = new Dictionary<String,dynamic>();
+            Dictionary<string, dynamic> response = new Dictionary<String, dynamic>();
             if (newUser)
             {
                 response.Add("Status", true);
                 response.Add("Message", "New User Added Successfully..");
-                response.Add("token", TokenGeneration.GenerateToken(user,_configuration));
+                response.Add("token", TokenGeneration.GenerateToken(_configuration));
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured..");
+                response.Add("token", Unauthorized());
+                return Ok(response);
+            }
+        }
+
+
+        [HttpPost("Login")]
+        public IActionResult Login(string UserName,string Password)
+        {
+            User_BALBase User_bal = new User_BALBase();
+            bool isUserAlreadyPresent = User_bal.Login(UserName, Password);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (isUserAlreadyPresent)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "User Is Logged In Successfully..");
+                response.Add("token", TokenGeneration.GenerateToken(_configuration));
                 return Ok(response);
             }
             else
