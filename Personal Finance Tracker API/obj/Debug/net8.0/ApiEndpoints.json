@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
+    "Method": "GetAllTransactions",
+    "RelativePath": "api/Transaction/{UserID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/Login",
