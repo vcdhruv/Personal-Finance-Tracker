@@ -1,0 +1,63 @@
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\appsettings.Development.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\appsettings.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Personal Finance Tracker API.exe
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Personal Finance Tracker API.deps.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Personal Finance Tracker API.runtimeconfig.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Personal Finance Tracker API.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Personal Finance Tracker API.pdb
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Data.Odbc.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Data.OleDb.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Data.SqlClient.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Unity.Abstractions.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\Unity.Interception.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Data.OleDb.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\bin\Debug\net8.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.csproj.AssemblyReference.cache
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.GeneratedMSBuildEditorConfig.editorconfig
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.AssemblyInfoInputs.cache
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.AssemblyInfo.cs
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.csproj.CoreCompileInputs.cache
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.MvcApplicationPartsAssemblyInfo.cs
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.MvcApplicationPartsAssemblyInfo.cache
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets.build.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets.development.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets\msbuild.Personal Finance Tracker API.Microsoft.AspNetCore.StaticWebAssets.props
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets\msbuild.build.Personal Finance Tracker API.props
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Personal Finance Tracker API.props
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Personal Finance Tracker API.props
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\staticwebassets.pack.json
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\scopedcss\bundle\Personal Finance Tracker API.styles.css
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal.5005EF09.Up2Date
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\refint\Personal Finance Tracker API.dll
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.pdb
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\Personal Finance Tracker API.genruntimeconfig.cache
+E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker API\obj\Debug\net8.0\ref\Personal Finance Tracker API.dll
