@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Personal_Finance_Tracker_API.BAL;
 using Personal_Finance_Tracker_API.Models;
@@ -15,6 +16,7 @@ namespace Personal_Finance_Tracker_API.Controllers
             _configuration = configuration;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult SignUp([FromForm] UserModel user)
         {
