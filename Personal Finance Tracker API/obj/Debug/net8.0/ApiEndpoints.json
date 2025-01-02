@@ -52,6 +52,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.ReportController",
+    "Method": "SpendingSummary",
+    "RelativePath": "api/Report/{UserID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
     "Method": "AddNewTransaction",
     "RelativePath": "api/Transaction",
