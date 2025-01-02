@@ -20,5 +20,21 @@ namespace Personal_Finance_Tracker_API.BAL
             return transaction_DALBase.AddTransaction(transaction);
         }
         #endregion
+
+        #region Update Transaction Of Specific User
+        public bool UpdateTransaction(TransactionModel transaction,int UserID, int TransactionID)
+        {
+            Transaction_DALBase transaction_ = new Transaction_DALBase();
+            return transaction_.UpdateTransaction(transaction,UserID,TransactionID);
+        }
+        #endregion
+
+        #region Delete Transaction Of Specific User
+        public bool DeleteTransaction(int UserID, int TransactionID)
+        {
+            Transaction_DALBase transaction_ = new Transaction_DALBase();
+            return transaction_.DeleteTransaction(UserID, TransactionID);
+        }
+        #endregion
     }
 }

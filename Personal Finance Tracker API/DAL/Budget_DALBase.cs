@@ -17,9 +17,9 @@ namespace Personal_Finance_Tracker_API.DAL
                 DbCommand cmd = db.GetStoredProcCommand("API_Budgets_GetAll");
                 db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
                 IDataReader rd = db.ExecuteReader(cmd);
-                if (rd != null) 
+                if (rd != null)
                 {
-                    while (rd.Read()) 
+                    while (rd.Read())
                     {
                         BudgetModel budget = new BudgetModel();
                         budget.UserID = (int)rd["UserID"];
@@ -57,5 +57,46 @@ namespace Personal_Finance_Tracker_API.DAL
             }
         }
         #endregion
+
+        #region Update Budget Of Specific User
+        public bool UpdateBudget(BudgetModel budget, int UserID, int BudgetID)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Budget_PUT");
+                db.AddInParameter(cmd, "@BudgetID", DbType.Int64, BudgetID);
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
+                db.AddInParameter(cmd, "@Category", DbType.String, budget.Category);
+                db.AddInParameter(cmd, "@Amount", DbType.Decimal, budget.Amount);
+                db.AddInParameter(cmd, "@Month", DbType.DateTime, DateTime.Parse(budget.Month));
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        #endregion
+
+        #region Delete Budget Of Specific User
+        public bool DeleteBudget(int UserID, int BudgetID)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Budget_DELETE");
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
+                db.AddInParameter(cmd, "@BudgetID", DbType.Int64, BudgetID);
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }
+

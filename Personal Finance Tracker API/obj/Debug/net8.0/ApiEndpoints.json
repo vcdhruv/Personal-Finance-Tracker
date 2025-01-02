@@ -37,6 +37,73 @@
   },
   {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.BudgetController",
+    "Method": "UpdateBudget",
+    "RelativePath": "api/Budget",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BudgetID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Amount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Month",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "BudgetID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.BudgetController",
+    "Method": "DeleteBudget",
+    "RelativePath": "api/Budget",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "BudgetID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.BudgetController",
     "Method": "GetAllBudgets",
     "RelativePath": "api/Budget/{UserID}",
     "HttpMethod": "GET",
@@ -124,6 +191,83 @@
       {
         "Name": "Description",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
+    "Method": "UpdateTransaction",
+    "RelativePath": "api/Transaction",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Amount",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Type",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Date",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
+    "Method": "DeleteTransaction",
+    "RelativePath": "api/Transaction",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

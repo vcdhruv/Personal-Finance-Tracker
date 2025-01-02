@@ -62,5 +62,46 @@ namespace Personal_Finance_Tracker_API.DAL
             }
         }
         #endregion
+
+        #region Update Transaction Of Specific User
+        public bool UpdateTransaction(TransactionModel transaction,int UserID,int TransactionID)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Transactions_PUT");
+                db.AddInParameter(cmd, "@TransactionID", DbType.Int64, TransactionID);
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
+                db.AddInParameter(cmd,"@Amount",DbType.Decimal,transaction.Amount);
+                db.AddInParameter(cmd,"@Type",DbType.String, transaction.Type);
+                db.AddInParameter(cmd,"@Category",DbType.String,transaction.Category);
+                db.AddInParameter(cmd,"@Date",DbType.DateTime,DateTime.Parse(transaction.Date));
+                db.AddInParameter(cmd, "@Description", DbType.String, transaction.Description);
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Delete Transaction Of Specific User
+        public bool DeleteTransaction(int UserID, int TransactionID)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Transactions_DELETE");
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
+                db.AddInParameter(cmd, "@TransactionID", DbType.Int64, TransactionID);
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

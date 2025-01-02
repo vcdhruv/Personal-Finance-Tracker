@@ -57,5 +57,51 @@ namespace Personal_Finance_Tracker_API.Controllers
             }
         }
         #endregion
+
+        #region Update Transaction Of Specific User
+        [Authorize]
+        [HttpPut]
+        public IActionResult UpdateTransaction([FromForm]TransactionModel transaction, int UserID, int TransactionID)
+        {
+            Transaction_BALBase transaction_ = new Transaction_BALBase();
+            bool isSuccess = transaction_.UpdateTransaction(transaction,UserID,TransactionID);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (isSuccess)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Transaction Updated Successfully...");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured...");
+                return Ok(response);
+            }
+        }
+        #endregion
+
+        #region Delete Transaction Of Specific User
+        [Authorize]
+        [HttpDelete]
+        public IActionResult DeleteTransaction(int UserID, int TransactionID)
+        {
+            Transaction_BALBase transaction_ = new Transaction_BALBase();
+            bool isSuccess = transaction_.DeleteTransaction(UserID, TransactionID);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (isSuccess)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Transaction Deleted Successfully..");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured..");
+                return Ok(response);
+            }
+        }
+        #endregion
     }
 }

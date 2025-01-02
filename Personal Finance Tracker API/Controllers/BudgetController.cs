@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Personal_Finance_Tracker_API.BAL;
@@ -48,6 +49,52 @@ namespace Personal_Finance_Tracker_API.Controllers
             {
                 response.Add("Status", true);
                 response.Add("Message", "New Budget Added Successfully..");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured..");
+                return Ok(response);
+            }
+        }
+        #endregion
+
+        #region Update Budget Of Specific User
+        [Authorize]
+        [HttpPut]
+        public IActionResult UpdateBudget([FromForm] BudgetModel budget, int UserID, int BudgetID)
+        {
+            Budget_BALBase budget_BALBase = new Budget_BALBase();
+            bool isSuccess = budget_BALBase.UpdateBudget(budget, UserID, BudgetID);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (isSuccess)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Budget Updated Successfully..");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured..");
+                return Ok(response);
+            }
+        }
+        #endregion
+
+        #region Delete Budget Of Specific User
+        [Authorize]
+        [HttpDelete]
+        public IActionResult DeleteBudget(int UserID, int BudgetID)
+        {
+            Budget_BALBase budget_ = new Budget_BALBase();
+            bool isSuccess = budget_.DeleteBudget(UserID, BudgetID);
+            Dictionary<string,dynamic> response = new Dictionary<string,dynamic>();
+            if (isSuccess)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Budget Deleted Successfully..");
                 return Ok(response);
             }
             else
