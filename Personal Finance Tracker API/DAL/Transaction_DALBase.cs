@@ -27,7 +27,7 @@ namespace Personal_Finance_Tracker_API.DAL
                         transaction.Amount = (decimal)rd["Amount"];
                         transaction.Type = rd["Type"].ToString();
                         transaction.Category = rd["Category"].ToString();
-                        transaction.Date = (DateTime)rd["Date"];
+                        transaction.Date = rd["Date"].ToString();
                         transaction.Description = rd["Description"].ToString();
                         transactions.Add(transaction);
                     }

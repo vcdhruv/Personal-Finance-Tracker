@@ -34,7 +34,7 @@
       },
       {
         "Name": "Date",
-        "Type": "System.DateTime",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
