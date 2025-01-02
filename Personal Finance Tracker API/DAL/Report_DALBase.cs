@@ -37,5 +37,36 @@ namespace Personal_Finance_Tracker_API.DAL
             }
         }
         #endregion
+
+        #region Get Savings Progress
+        public List<ReportModel> SavingsProgress(int UserID)
+        {
+            List<ReportModel> savings = new List<ReportModel>();
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Reports_SavingsProgress");
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, UserID);
+                IDataReader rd = db.ExecuteReader(cmd);
+                if (rd != null)
+                {
+                    while (rd.Read())
+                    {
+                        ReportModel saving = new ReportModel();
+                        saving.UserID = UserID;
+                        saving.Total_Income = (decimal)rd["Total_Income"];
+                        saving.Total_Expense = (decimal)rd["Total_Expense"];
+                        saving.Savings = (decimal)rd["Savings"];
+                        savings.Add(saving);
+                    }
+                }
+                return savings;
+            }
+            catch
+            {
+                return savings;
+            }
+        }
+        #endregion
     }
 }

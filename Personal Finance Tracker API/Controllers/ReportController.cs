@@ -12,7 +12,7 @@ namespace Personal_Finance_Tracker_API.Controllers
     {
         #region Get Spending Summary
         [Authorize]
-        [HttpGet("{UserID}")]
+        [HttpGet("SpendingSummary/{UserID}")]
         public IActionResult SpendingSummary(int UserID)
         {
             Report_BALBase report = new Report_BALBase();
@@ -30,6 +30,31 @@ namespace Personal_Finance_Tracker_API.Controllers
                 response.Add("Status", false);
                 response.Add("Message", "Some Error Has Occured...");
                 response.Add("SpendingSummary", null);
+                return Ok(response);
+            }
+        }
+        #endregion
+
+        #region Get Savings Progress
+        [Authorize]
+        [HttpGet("SavingsProgress/{UserID}")]
+        public IActionResult SavingsProgress(int UserID)
+        {
+            Report_BALBase report = new Report_BALBase();
+            List<ReportModel> savings = report.SavingsProgress(UserID);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (savings != null && savings.Count > 0)
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Savings Progress fetched successfully...");
+                response.Add("Savings", savings);
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured...");
+                response.Add("Savings", null);
                 return Ok(response);
             }
         }

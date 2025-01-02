@@ -12,5 +12,13 @@ namespace Personal_Finance_Tracker_API.BAL
             return report_DALBase.SpendingSummary(UserID);
         }
         #endregion
+
+        #region Get Savings Progress
+        public List<ReportModel> SavingsProgress(int UserID)
+        {
+            Report_DALBase report_DALBase = new Report_DALBase();
+            return report_DALBase.SavingsProgress(UserID);
+        }
+        #endregion
     }
 }
