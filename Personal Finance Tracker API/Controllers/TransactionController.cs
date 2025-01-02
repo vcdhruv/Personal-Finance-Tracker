@@ -10,6 +10,7 @@ namespace Personal_Finance_Tracker_API.Controllers
     [ApiController]
     public class TransactionController : ControllerBase
     {
+        #region Get All Transactions Of Specific User
         [Authorize]
         [HttpGet("{UserID}")]
         public IActionResult GetAllTransactions(int UserID)
@@ -32,5 +33,29 @@ namespace Personal_Finance_Tracker_API.Controllers
                 return Ok(response);
             }
         }
+        #endregion
+
+        #region Add New Transaction Of Specific User
+        [Authorize]
+        [HttpPost]
+        public IActionResult AddNewTransaction([FromForm] TransactionModel transaction)
+        {
+            Transaction_BALBase newTransaction = new Transaction_BALBase();
+            bool isSuccess = newTransaction.AddNewTransaction(transaction);
+            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            if (isSuccess) 
+            {
+                response.Add("Status", true);
+                response.Add("Message", "New Transaction Added Successfully...");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured...");
+                return Ok(response);
+            }
+        }
+        #endregion
     }
 }

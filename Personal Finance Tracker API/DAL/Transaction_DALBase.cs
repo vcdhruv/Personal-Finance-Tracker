@@ -7,7 +7,7 @@ namespace Personal_Finance_Tracker_API.DAL
 {
     public class Transaction_DALBase : DAL_Helpers
     {
-        #region Get All Transactions
+        #region Get All Transactions Of Specific User
         public List<TransactionModel> GetAllTransactions(int UserID)
         {
             List<TransactionModel> transactions = new List<TransactionModel>();
@@ -37,6 +37,28 @@ namespace Personal_Finance_Tracker_API.DAL
             catch
             {
                 return transactions;
+            }
+        }
+        #endregion
+
+        #region Add New Transaction Of Specific User
+        public bool AddTransaction(TransactionModel transaction)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Transactions_POST");
+                db.AddInParameter(cmd, "@UserID", DbType.Int64, transaction.UserID);
+                db.AddInParameter(cmd, "@Amount", DbType.Decimal, transaction.Amount);
+                db.AddInParameter(cmd, "@Type", DbType.String, transaction.Type);
+                db.AddInParameter(cmd, "@Category", DbType.String, transaction.Category);
+                db.AddInParameter(cmd, "@Description", DbType.String, transaction.Description);
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+
+            }
+            catch
+            {
+                return false;
             }
         }
         #endregion
