@@ -53,9 +53,9 @@ namespace Personal_Finance_Tracker_API.Controllers
             {
                 response.Add("Status", true);
                 response.Add("Message", "User Is Logged In Successfully..");
-                response.Add("UserName", login.UserName);
-                response.Add("Email", login.Email);
-                response.Add("UserID", login.UserID);
+                response.Add("UserName", isUserAlreadyPresent.UserName);
+                response.Add("Email", isUserAlreadyPresent.Email);
+                response.Add("UserID", isUserAlreadyPresent.UserID);
                 response.Add("token", TokenGeneration.GenerateToken(_configuration));
                 return Ok(response);
             }

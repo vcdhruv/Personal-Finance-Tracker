@@ -298,7 +298,17 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Username",
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
         "Type": "System.String",
         "IsRequired": false
       },

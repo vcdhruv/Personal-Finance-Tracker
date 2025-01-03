@@ -47,6 +47,9 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
 
                     var tokenResponse = JsonConvert.DeserializeObject<LoginModel>(responseBody);
                     TempData["Token"] = tokenResponse.Token;
+                    TempData["UserName"] = tokenResponse.UserName;
+                    TempData["UserID"] = tokenResponse.UserID;
+                    TempData["Email"] = tokenResponse.Email;
                     return RedirectToAction("Index");
                 }
                 else

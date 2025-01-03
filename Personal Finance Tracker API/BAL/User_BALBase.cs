@@ -28,17 +28,10 @@ namespace Personal_Finance_Tracker_API.BAL
         #endregion
 
         #region Login
-        public bool Login(string UserName, string Password)
+        public LoginModel Login(LoginModel login)
         {
             User_DALBase dal_user = new User_DALBase();
-            if (dal_user.Login(UserName, Password) == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return dal_user.Login(login);
         }
         #endregion
     }

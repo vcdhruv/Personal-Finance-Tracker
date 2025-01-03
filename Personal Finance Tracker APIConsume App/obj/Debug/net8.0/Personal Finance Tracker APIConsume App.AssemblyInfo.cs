@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Personal Finance Tracker APIConsume App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b478103777885328b7c5091ee7e448291f8f7ef8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf506f46722447f5560755dc39ac141d8d98050b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Personal Finance Tracker APIConsume App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Personal Finance Tracker APIConsume App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
