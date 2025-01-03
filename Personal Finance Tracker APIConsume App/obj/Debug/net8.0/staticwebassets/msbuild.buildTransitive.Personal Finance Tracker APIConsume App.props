@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Personal Finance Tracker APIConsume App.props" />
+</Project>

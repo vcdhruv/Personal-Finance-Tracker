@@ -17,6 +17,7 @@ namespace Personal_Finance_Tracker_API.Controllers
         }
 
         #region Sign Up
+        [AllowAnonymous]
         [HttpPost("SignUp")]
         public IActionResult SignUp([FromForm] UserModel user)
         {
@@ -41,11 +42,12 @@ namespace Personal_Finance_Tracker_API.Controllers
         #endregion
 
         #region Login
+        [AllowAnonymous]
         [HttpPost("Login")]
-        public IActionResult Login(string UserName,string Password)
+        public IActionResult Login([FromForm] LoginModel login)
         {
             User_BALBase User_bal = new User_BALBase();
-            bool isUserAlreadyPresent = User_bal.Login(UserName, Password);
+            bool isUserAlreadyPresent = User_bal.Login(login.Username, login.Password);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (isUserAlreadyPresent)
             {
