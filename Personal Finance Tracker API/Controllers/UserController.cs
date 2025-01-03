@@ -47,12 +47,15 @@ namespace Personal_Finance_Tracker_API.Controllers
         public IActionResult Login([FromForm] LoginModel login)
         {
             User_BALBase User_bal = new User_BALBase();
-            bool isUserAlreadyPresent = User_bal.Login(login.Username, login.Password);
+            LoginModel isUserAlreadyPresent = User_bal.Login(login);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
-            if (isUserAlreadyPresent)
+            if (login != null)
             {
                 response.Add("Status", true);
                 response.Add("Message", "User Is Logged In Successfully..");
+                response.Add("UserName", login.UserName);
+                response.Add("Email", login.Email);
+                response.Add("UserID", login.UserID);
                 response.Add("token", TokenGeneration.GenerateToken(_configuration));
                 return Ok(response);
             }
@@ -60,6 +63,9 @@ namespace Personal_Finance_Tracker_API.Controllers
             {
                 response.Add("Status", false);
                 response.Add("Message", "Some Error Has Occured..");
+                response.Add("UserName", "");
+                response.Add("Email", "");
+                response.Add("UserID", "");
                 response.Add("token", Unauthorized());
                 return Ok(response);
             }

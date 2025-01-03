@@ -11,6 +11,20 @@
 .login-video-section{
     width:30rem;
 }
-.forgot_password{
+.heading_txt{
     color:var(--bs-primary-color)
+}
+.forgot_password {
+    color: var(--bs-primary-color)
+}
+.sign_up_text{
+    font-size:0.9em;
+    letter-spacing:1px
+}
+.sign_up_now {
+    font-size: 0.8em;
+    color:red
+}
+.sign_up_now:hover{
+    cursor:pointer;
 }

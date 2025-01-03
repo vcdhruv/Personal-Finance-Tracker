@@ -35,26 +35,30 @@ namespace Personal_Finance_Tracker_API.DAL
         #endregion
 
         #region Login
-        public bool Login(string UserName , string Password) 
+        public LoginModel Login(LoginModel login) 
         {
+            LoginModel user = new LoginModel();
             try
             {
                 SqlDatabase db = new SqlDatabase(connStr);
                 DbCommand cmd = db.GetStoredProcCommand("API_Users_Login");
-                db.AddInParameter(cmd, "@UserName", DbType.String, UserName);
-                db.AddInParameter(cmd, "@PasswordHash", DbType.String, PasswordHashing.HashPassword(Password));
-                if (Convert.ToBoolean(db.ExecuteNonQuery(cmd)))
+                db.AddInParameter(cmd, "@UserName", DbType.String, login.UserName);
+                db.AddInParameter(cmd, "@PasswordHash", DbType.String, PasswordHashing.HashPassword(login.Password));
+                IDataReader rd = db.ExecuteReader(cmd);
+                if(rd != null)
                 {
-                    return true;
+                    while (rd.Read())
+                    {
+                        user.UserID = (int)rd["UserID"];
+                        user.UserName = rd["UserName"].ToString();
+                        user.Email = rd["Email"].ToString();
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+                return user;
             }
             catch
             {
-                return false;
+                return user;
             }
         }
         #endregion
