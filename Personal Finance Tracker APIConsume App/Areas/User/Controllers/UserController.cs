@@ -33,7 +33,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
 
         #region Login POST Method
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(LoginModel login)
+        public async Task<IActionResult> LoginUser(LoginModel login)
         {
             try
             {
@@ -46,10 +46,10 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                     var responseBody = await response.Content.ReadAsStringAsync();
 
                     var tokenResponse = JsonConvert.DeserializeObject<LoginModel>(responseBody);
-                    TempData["Token"] = tokenResponse.Token;
-                    TempData["UserName"] = tokenResponse.UserName;
-                    TempData["UserID"] = tokenResponse.UserID;
-                    TempData["Email"] = tokenResponse.Email;
+                    HttpContext.Session.SetString("Token", tokenResponse.Token);
+                    HttpContext.Session.SetString("UserName", tokenResponse.UserName);
+                    HttpContext.Session.SetString("Email", tokenResponse.Email);
+                    HttpContext.Session.SetString("UserID", tokenResponse.UserID.ToString());
                     return RedirectToAction("Index");
                 }
                 else
@@ -61,6 +61,14 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+        #endregion
+
+        #region Logout 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
         #endregion
     }
