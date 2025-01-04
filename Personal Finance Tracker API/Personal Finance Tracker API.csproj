@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Personal_Finance_Tracker_API</RootNamespace>
+    <UserSecretsId>f0621b27-e184-4cdc-9b30-1bad0ee08e6a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

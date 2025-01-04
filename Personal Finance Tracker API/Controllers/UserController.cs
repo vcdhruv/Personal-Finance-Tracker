@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Personal_Finance_Tracker_API.BAL;
 using Personal_Finance_Tracker_API.Models;
+using Personal_Finance_Tracker_API.Services;
 
 namespace Personal_Finance_Tracker_API.Controllers
 {
@@ -11,9 +12,12 @@ namespace Personal_Finance_Tracker_API.Controllers
     public class UserController : ControllerBase
     {
         public IConfiguration _configuration;
-        public UserController(IConfiguration configuration)
+        private readonly IEmailService emailService;
+
+        public UserController(IConfiguration configuration, IEmailService emailService)
         {
             _configuration = configuration;
+            this.emailService = emailService;
         }
 
         #region Sign Up
@@ -69,6 +73,16 @@ namespace Personal_Finance_Tracker_API.Controllers
                 response.Add("token", Unauthorized());
                 return Ok(response);
             }
+        }
+        #endregion
+
+        #region Send Email
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> SendEamil(string receptor, string subject, string body)
+        {
+            await emailService.SendEmail(receptor, subject, body);
+            return Ok();
         }
         #endregion
     }

@@ -1,14 +1,15 @@
-// for jwt bearer
+#region Jwt bearer
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Personal_Finance_Tracker_API.Services;
 using System.Text;
-// jwt bearer
+#endregion
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// Jwt bearer service
+#region Jwt bearer 
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -29,12 +30,16 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true
     };
 });
-//jwt bearer service ends
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region Email Service
+builder.Services.AddTransient<IEmailService, EmailService>();
+#endregion
 
 var app = builder.Build();
 
@@ -44,7 +49,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+#region Jwt bearer
 app.UseAuthentication(); // for jwt bearer
+#endregion
+
 app.UseAuthorization();
 
 app.MapControllers();
