@@ -78,10 +78,10 @@ namespace Personal_Finance_Tracker_API.Controllers
 
         #region Send Email
         [AllowAnonymous]
-        [HttpPost]
-        public async Task<IActionResult> SendEamil(string receptor, string subject, string body)
+        [HttpPost("Email")]
+        public async Task<IActionResult> SendEamil([FromForm] EmailModel email)
         {
-            await emailService.SendEmail(receptor, subject, body);
+            await emailService.SendEmail(email);
             return Ok();
         }
         #endregion

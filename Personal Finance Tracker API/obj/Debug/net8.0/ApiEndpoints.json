@@ -292,23 +292,23 @@
   {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.UserController",
     "Method": "SendEamil",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/Email",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "receptor",
+        "Name": "Receptor",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "subject",
+        "Name": "Subject",
         "Type": "System.String",
         "IsRequired": false
       },
       {
-        "Name": "body",
+        "Name": "Body",
         "Type": "System.String",
         "IsRequired": false
       }
