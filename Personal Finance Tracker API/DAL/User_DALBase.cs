@@ -62,5 +62,23 @@ namespace Personal_Finance_Tracker_API.DAL
             }
         }
         #endregion
+
+        #region Change Password Of Specific User
+        public bool ChangePassword(ChangePasswordModel cng_password)
+        {
+            try
+            {
+                SqlDatabase db = new SqlDatabase(connStr);
+                DbCommand cmd = db.GetStoredProcCommand("API_Users_ChangePassword");
+                db.AddInParameter(cmd, "@Email", DbType.String, cng_password.Email);
+                db.AddInParameter(cmd, "@PasswordHash", DbType.String, PasswordHashing.HashPassword(cng_password.PasswordHash));
+                return Convert.ToBoolean(db.ExecuteNonQuery(cmd)) == true ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

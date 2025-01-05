@@ -85,5 +85,28 @@ namespace Personal_Finance_Tracker_API.Controllers
             return Ok();
         }
         #endregion
+
+        #region Change Password Of User
+        [AllowAnonymous]
+        [HttpPut]
+        public IActionResult ChangePassword([FromForm] ChangePasswordModel cng_password)
+        {
+            User_BALBase user_ = new User_BALBase();
+            bool isSuccess = user_.ChangePassword(cng_password);
+            Dictionary<string,dynamic> response = new Dictionary<string,dynamic>();
+            if (isSuccess) 
+            {
+                response.Add("Status", true);
+                response.Add("Message", "Password Updated Successfully");
+                return Ok(response);
+            }
+            else
+            {
+                response.Add("Status", false);
+                response.Add("Message", "Some Error Has Occured.");
+                return Ok(response);
+            }
+        }
+        #endregion
     }
 }

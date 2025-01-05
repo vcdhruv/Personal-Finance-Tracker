@@ -291,6 +291,27 @@
   },
   {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.UserController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/User",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PasswordHash",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.UserController",
     "Method": "SendEamil",
     "RelativePath": "api/User/Email",
     "HttpMethod": "POST",

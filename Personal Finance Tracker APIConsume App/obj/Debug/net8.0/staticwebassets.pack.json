@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets\\css\\_LoginLayout.css"
     },
     {
+      "Id": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\forgotpassword.css",
+      "PackagePath": "staticwebassets\\css\\forgotpassword.css"
+    },
+    {
       "Id": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\verificationpage.css",
+      "PackagePath": "staticwebassets\\css\\verificationpage.css"
     },
     {
       "Id": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\favicon.ico",

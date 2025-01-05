@@ -15,7 +15,8 @@
     color:var(--bs-primary-color)
 }
 .forgot_password {
-    color: var(--bs-primary-color)
+    color: var(--bs-primary-color);
+    text-decoration:none;
 }
 .sign_up_text{
     font-size:0.9em;
@@ -23,8 +24,11 @@
 }
 .sign_up_now {
     font-size: 0.8em;
-    color:red
+    color: red;
 }
 .sign_up_now:hover{
     cursor:pointer;
+}
+li{
+    list-style:none;
 }

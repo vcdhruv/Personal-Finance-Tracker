@@ -80,11 +80,84 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
         }
         #endregion
 
-        #region Send Email POST Method
-        public async Task<IActionResult> SendEmail(EmailModel email)
+        #region Random Code Email Send
+        public async Task<IActionResult> RandomCodeEmail(EmailModel code)
         {
+            string verificationCode = GenerateRandomCodeForEmail();
+            TempData["VerificationCode"] = verificationCode;
+            string emailBody = $@"
+            <html>
+            <body>
+                <h1>Email Verification</h1>
+                <p>Dear User,</p>
+                <p>Please use the following code to verify your email address:</p>
+                <h1 style='color: blue;'>{verificationCode}</h2>
+                <p>Thank you!</p>
+            </body>
+            </html>";
+
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(code.Email), "Receptor");
+            content.Add(new StringContent("Personal Finance Tracker Email Verification"), "Subject");
+
+            // Add HTML body with explicit Content-Type
+            var htmlBodyContent = new StringContent(emailBody);
+            htmlBodyContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
+            content.Add(htmlBodyContent, "Body");
+
+            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/Email", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+        #endregion
+
+        #region Send Email POST Method
+        public async Task<JsonResult> SendEmail(EmailModel email)
+        {
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(email.Email),"Receptor" );
+            content.Add(new StringContent(email.Subject), "Subject");
+            //content.Add(new StringContent(emailBody), "Body");
+
+            // Add HTML body with explicit Content-Type
+            var htmlBodyContent = new StringContent(email.Body);
+            htmlBodyContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
+            content.Add(htmlBodyContent, "Body");
+
+            HttpResponseMessage result = await _client.PostAsync($"{_client.BaseAddress}/User/Email",content);
+            if (result.IsSuccessStatusCode) 
+            {
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { success = false });
+            }
+        }
+        #endregion
+
+        #region Forgot Password Page
+        public IActionResult ForgotPasswordPage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string receptor_email)
+        {
+            EmailModel email = new EmailModel();
+            email.Email = receptor_email;
+            email.Subject = "Personal Finance Tracker Email Verification";
+
             // Generate the random verification code
             string verificationCode = GenerateRandomCodeForEmail();
+            TempData["verificationCode"] = verificationCode;
+            TempData["Verified_Email"] = receptor_email;
 
             // Prepare the email body with HTML content
             string emailBody = $@"
@@ -93,30 +166,55 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                 <h1>Email Verification</h1>
                 <p>Dear User,</p>
                 <p>Please use the following code to verify your email address:</p>
-                <h2 style='color: blue;'>{verificationCode}</h2>
+                <h1 style='color: blue;'>{verificationCode}</h1>
                 <p>Thank you!</p>
             </body>
             </html>";
+            email.Body = emailBody;
+            return await SendEmail(email);
+        }
+        #endregion
 
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent("badwhisky777@gmail.com"),"Receptor" );
-            content.Add(new StringContent("This Is For Email Verification"), "Subject");
-            //content.Add(new StringContent(emailBody), "Body");
-
-            // Add HTML body with explicit Content-Type
-            var htmlBodyContent = new StringContent(emailBody);
-            htmlBodyContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
-            content.Add(htmlBodyContent, "Body");
-
-            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/Email",content);
-            if (response.IsSuccessStatusCode) 
+        #region Email Verification Code Page
+        [HttpGet]
+        public IActionResult VerificationPage()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> VerificationPage(string verification_Code)
+        {
+            EmailModel email = new EmailModel();
+            if(TempData["verificationCode"].ToString() == verification_Code)
             {
-                return RedirectToAction("Index");
+                email.Email = TempData["Verified_Email"].ToString();
+                email.Subject = "Email Verified Successfully..";
+                email.Body = $@"
+                <html>
+                <body>
+                    <h1>Email Verified Successfully</h1>
+                    <p>Dear User, You Are Successfully Verified..</p>
+                    <p>Go Back To Website</p>
+                    <p>Thank you!</p>
+                </body>
+                </html>";
+            }
+            if (email != null) 
+            {
+                return await SendEmail(email);
             }
             else
             {
-                return RedirectToAction("Login");
+                TempData["error_msg"] = "Please Enter Valid Code..";
+                return View();
             }
+        }
+        #endregion
+
+        #region Change Password Page
+        public IActionResult ChangePasswordPage()
+        {
+            return View();
         }
         #endregion
 

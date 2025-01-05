@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2RFfvom4Xu5PYZGlC0RYCBx6d5wtz0cUxsjUsgnNF90=",
+  "Hash": "KFmk9nUPU5d5mBRRH3gVAnnCxe9+oCyV9N7ugLbf6gA=",
   "Source": "Personal Finance Tracker APIConsume App",
   "BasePath": "_content/Personal Finance Tracker APIConsume App",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\css\\_LoginLayout.css"
     },
     {
+      "Identity": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\forgotpassword.css",
+      "SourceId": "Personal Finance Tracker APIConsume App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\",
+      "BasePath": "_content/Personal Finance Tracker APIConsume App",
+      "RelativePath": "css/forgotpassword.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\forgotpassword.css"
+    },
+    {
       "Identity": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\LoginPage.css",
       "SourceId": "Personal Finance Tracker APIConsume App",
       "SourceType": "Discovered",
@@ -110,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\css\\verificationpage.css",
+      "SourceId": "Personal Finance Tracker APIConsume App",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\",
+      "BasePath": "_content/Personal Finance Tracker APIConsume App",
+      "RelativePath": "css/verificationpage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\verificationpage.css"
     },
     {
       "Identity": "E:\\Flutter App\\Personal-Finance-Tracker\\Personal Finance Tracker APIConsume App\\wwwroot\\favicon.ico",

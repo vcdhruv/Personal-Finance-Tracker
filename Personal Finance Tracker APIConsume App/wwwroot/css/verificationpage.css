@@ -1,0 +1,23 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AU+SA:wght@100..400&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    font-family: "Urbanist", serif;
+    letter-spacing: 1px;
+    font-weight:600;
+    color:white;
+}
+a{
+    text-decoration:none
+}
+.input_field input {
+    width: 2.5rem; /* Adjust the width */
+    height: 2.5rem; /* Adjust the height */
+    text-align: center; /* Center-align the input content */
+    font-size: 1.125rem; /* Adjust font size */
+    margin: 0 0.3125rem; /* Add space between inputs */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    border-radius: 0.3125rem; /* Rounded corners for better aesthetics */
+    background-color: #494F55;
+    border-color: #494F55;
+}
+
+

@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Verification Page";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<link rel="stylesheet" href="~/css/verificationpage.css" asp-append-version="true"/>
+<div class="container bg-secondary d-flex flex-column align-items-center p-5 rounded-3">
+    <i class="fa-solid fa-lock fs-2 mb-4"></i>
+    <h2>Reset Password</h2>
+    <p class="text-white-50">Enter your code here</p>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center mb-2 input_field">
+            <input type="text" maxlength="1" id="code_val_1"/>
+            <input type="text" maxlength="1" id="code_val_2"/>
+            <input type="text" maxlength="1" id="code_val_3" />
+            <input type="text" maxlength="1" id="code_val_4" />
+            <input type="text" maxlength="1" id="code_val_5" />
+            <input type="text" maxlength="1" id="code_val_6" />
+        </div>
+    </div>
+    <div class="col-12 mb-4">
+        <input type="submit" value="Verify" class="btn btn-primary fw-bolder w-100" id="verifybtn">
+        <span class="text-danger">@TempData["error_msg"]</span>
+    </div>
+    <p class="text-white-50 ">Are you facing any problems with receiving the code?</p>
+    <div>
+        <a asp-area="" asp-controller="" asp-action="" class="text-white fw-bold">Resend Code</a>
+    </div>
+    <hr class="text-white-50 w-100"/>
+    <div class="col-12 d-flex align-items-center justify-content-center">
+        <p class="d-flex justify-content-center align-items-end">Remember Your Password?</p>
+    </div>
+    <div class="col-12 d-flex align-items-center justify-content-center">
+        <a asp-area="User" asp-controller="User" asp-action="Login" class="btn btn-dark ">Go Back </a>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function () {
+        let verifyBtn = document.getElementById("verifybtn");
+        
+        verifyBtn.addEventListener('click', () => {
+            let code_1 = document.getElementById("code_val_1").value;
+            let code_2 = document.getElementById("code_val_2").value;
+            let code_3 = document.getElementById("code_val_3").value;
+            let code_4 = document.getElementById("code_val_4").value;
+            let code_5 = document.getElementById("code_val_5").value;
+            let code_6 = document.getElementById("code_val_6").value;
+
+            let code_to_be_verified = code_1 + code_2 + code_3 + code_4 + code_5 + code_6;
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("VerificationPage", "User")",
+                data: { verification_Code: code_to_be_verified },
+                success: function (response) {
+                    console.log(response);
+                    window.location.href = "@Url.Action("ChangePasswordPage", "User")"
+                },
+                Error: function (response) {
+                    console.log(respose);
+                }
+            });
+        });
+        
+    });
+
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -34,5 +34,13 @@ namespace Personal_Finance_Tracker_API.BAL
             return dal_user.Login(login);
         }
         #endregion
+
+        #region Change Password Of Specific User
+        public bool ChangePassword(ChangePasswordModel cng_password)
+        {
+            User_DALBase user = new User_DALBase();
+            return user.ChangePassword(cng_password);
+        }
+        #endregion
     }
 }
