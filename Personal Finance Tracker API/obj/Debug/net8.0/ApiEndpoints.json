@@ -292,7 +292,7 @@
   {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.UserController",
     "Method": "ChangePassword",
-    "RelativePath": "api/User",
+    "RelativePath": "api/User/ChangePassword",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

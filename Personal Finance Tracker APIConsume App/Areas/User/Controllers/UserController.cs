@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using Newtonsoft.Json;
 using Personal_Finance_Tracker_APIConsume_App.Areas.User.Models;
 using Personal_Finance_Tracker_APIConsume_App.BAL;
+using Personal_Finance_Tracker_APIConsume_App.DAL;
 
 namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
 {
@@ -80,43 +81,6 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
         }
         #endregion
 
-        #region Random Code Email Send
-        public async Task<IActionResult> RandomCodeEmail(EmailModel code)
-        {
-            string verificationCode = GenerateRandomCodeForEmail();
-            TempData["VerificationCode"] = verificationCode;
-            string emailBody = $@"
-            <html>
-            <body>
-                <h1>Email Verification</h1>
-                <p>Dear User,</p>
-                <p>Please use the following code to verify your email address:</p>
-                <h1 style='color: blue;'>{verificationCode}</h2>
-                <p>Thank you!</p>
-            </body>
-            </html>";
-
-            MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(code.Email), "Receptor");
-            content.Add(new StringContent("Personal Finance Tracker Email Verification"), "Subject");
-
-            // Add HTML body with explicit Content-Type
-            var htmlBodyContent = new StringContent(emailBody);
-            htmlBodyContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
-            content.Add(htmlBodyContent, "Body");
-
-            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/Email", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
-        #endregion
-
         #region Send Email POST Method
         public async Task<JsonResult> SendEmail(EmailModel email)
         {
@@ -137,6 +101,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             }
             else
             {
+                HttpContext.Session.Clear();
                 return Json(new { success = false });
             }
         }
@@ -151,13 +116,19 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
         public async Task<IActionResult> ForgotPassword(string receptor_email)
         {
             EmailModel email = new EmailModel();
+            User_DAL dalUser = new User_DAL();
+            bool isEmailPresent = dalUser.IsUserPresentOrNot(receptor_email);
+            if (!isEmailPresent)
+            {
+                return View();
+            }
             email.Email = receptor_email;
             email.Subject = "Personal Finance Tracker Email Verification";
 
             // Generate the random verification code
             string verificationCode = GenerateRandomCodeForEmail();
-            TempData["verificationCode"] = verificationCode;
-            TempData["Verified_Email"] = receptor_email;
+            HttpContext.Session.SetString("Receptor_Email", receptor_email);
+            HttpContext.Session.SetString("VerificationCode",verificationCode);
 
             // Prepare the email body with HTML content
             string emailBody = $@"
@@ -185,9 +156,10 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
         public async Task<IActionResult> VerificationPage(string verification_Code)
         {
             EmailModel email = new EmailModel();
-            if(TempData["verificationCode"].ToString() == verification_Code)
+            string verificationCode = HttpContext.Session.GetString("VerificationCode").ToString();
+            if (verificationCode == verification_Code)
             {
-                email.Email = TempData["Verified_Email"].ToString();
+                email.Email = HttpContext.Session.GetString("Receptor_Email").ToString();
                 email.Subject = "Email Verified Successfully..";
                 email.Body = $@"
                 <html>
@@ -199,7 +171,13 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                 </body>
                 </html>";
             }
-            if (email != null) 
+            else
+            {
+                return Json(new { success = false, errorMessage = "Invalid verification code." });
+            }
+            if (!string.IsNullOrEmpty(email.Email) &&
+                !string.IsNullOrEmpty(email.Subject) &&
+                !string.IsNullOrEmpty(email.Body))
             {
                 return await SendEmail(email);
             }
@@ -208,11 +186,35 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                 TempData["error_msg"] = "Please Enter Valid Code..";
                 return View();
             }
+
         }
         #endregion
 
         #region Change Password Page
+        [HttpGet]
         public IActionResult ChangePasswordPage()
+        {
+            return View();
+        }
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel cng_password)
+        {
+            MultipartFormDataContent content = new MultipartFormDataContent();
+            content.Add(new StringContent(cng_password.Password), "PasswordHash");
+            content.Add(new StringContent(HttpContext.Session.GetString("Receptor_Email").ToString()), "Email");
+
+            HttpResponseMessage response = await _client.PutAsync($"{_client.BaseAddress}/User/ChangePassword",content);
+            if (response.IsSuccessStatusCode) 
+            {
+                return RedirectToAction("PasswordChangedSuccessfully");
+            }
+
+            return View();
+        }
+        #endregion
+
+        #region Password Changed Success Page
+        public IActionResult PasswordChangedSuccessfully()
         {
             return View();
         }

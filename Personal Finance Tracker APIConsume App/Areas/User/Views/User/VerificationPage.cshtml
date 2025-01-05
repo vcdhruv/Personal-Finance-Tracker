@@ -19,7 +19,7 @@
     </div>
     <div class="col-12 mb-4">
         <input type="submit" value="Verify" class="btn btn-primary fw-bolder w-100" id="verifybtn">
-        <span class="text-danger">@TempData["error_msg"]</span>
+        <span class="text-white">@TempData["error_msg"]</span>
     </div>
     <p class="text-white-50 ">Are you facing any problems with receiving the code?</p>
     <div>
@@ -37,6 +37,14 @@
 <script>
     
     $(document).ready(function () {
+
+
+        $(".input_field input").on("input", function () {
+            $(".text-white").text(""); // Clear error message
+        });
+
+
+
         let verifyBtn = document.getElementById("verifybtn");
         
         verifyBtn.addEventListener('click', () => {
@@ -55,7 +63,11 @@
                 data: { verification_Code: code_to_be_verified },
                 success: function (response) {
                     console.log(response);
-                    window.location.href = "@Url.Action("ChangePasswordPage", "User")"
+                    if(response.success){
+                        window.location.href = "@Url.Action("ChangePasswordPage", "User")";
+                    }else{
+                        $(".text-white").text(response.errorMessage);
+                    }
                 },
                 Error: function (response) {
                     console.log(respose);

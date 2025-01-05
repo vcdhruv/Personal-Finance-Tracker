@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/User/Views/User/PasswordChangedSuccessfully.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXFBhc3N3b3JkQ2hhbmdlZFN1Y2Nlc3NmdWxseS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/User/Views/User/VerificationPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXFZlcmlmaWNhdGlvblBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

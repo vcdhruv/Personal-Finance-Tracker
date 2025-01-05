@@ -88,7 +88,7 @@ namespace Personal_Finance_Tracker_API.Controllers
 
         #region Change Password Of User
         [AllowAnonymous]
-        [HttpPut]
+        [HttpPut("ChangePassword")]
         public IActionResult ChangePassword([FromForm] ChangePasswordModel cng_password)
         {
             User_BALBase user_ = new User_BALBase();
