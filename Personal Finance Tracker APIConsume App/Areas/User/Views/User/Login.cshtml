@@ -17,12 +17,15 @@
                     <div class="mt-3 text-secondary">Please login to continue</div>
                 </div>
                 <div class="col-12 mb-5 d-flex flex-column justify-content-around">
+                    <span class="text-danger mb-2">@TempData["Error_Msg"]</span>
                     <form method="post" asp-action="LoginUser">
                         <div class="mb-3">
-                            <input type="text" asp-for="UserName" class="form-control" id="exampleInputEmail1" placeholder="Email Address">
+                            <input type="text" asp-for="Email" class="form-control" id="exampleInputEmail1" placeholder="Email Address">
+                            <span class="text-danger" asp-validation-for="Email"></span>
                         </div>
                         <div class="mb-3">
                             <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <span class="text-danger" asp-validation-for="Password"></span>
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
                             <div class="form-check">
@@ -37,7 +40,9 @@
                             <button type="submit" class="btn btn-primary w-100">Login</button>
                         </div>
                         <div class="text-secondary sign_up_text">
-                            Don't have an account? <span class="fw-bold sign_up_now">Sign Up Now</span>
+                            <a asp-area="User" asp-controller="User" asp-action="SignUp" >
+                                Don't have an account? <span class="fw-bold sign_up_now">Sign Up Now</span>
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -45,3 +50,8 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

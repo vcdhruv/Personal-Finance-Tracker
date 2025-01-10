@@ -53,7 +53,7 @@ namespace Personal_Finance_Tracker_API.Controllers
             User_BALBase User_bal = new User_BALBase();
             LoginModel isUserAlreadyPresent = User_bal.Login(login);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
-            if (login != null)
+            if (isUserAlreadyPresent.Email != null)
             {
                 response.Add("Status", true);
                 response.Add("Message", "User Is Logged In Successfully..");

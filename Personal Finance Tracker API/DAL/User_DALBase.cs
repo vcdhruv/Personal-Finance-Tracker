@@ -42,7 +42,7 @@ namespace Personal_Finance_Tracker_API.DAL
             {
                 SqlDatabase db = new SqlDatabase(connStr);
                 DbCommand cmd = db.GetStoredProcCommand("API_Users_Login");
-                db.AddInParameter(cmd, "@UserName", DbType.String, login.UserName);
+                db.AddInParameter(cmd, "@Email", DbType.String, login.Email);
                 db.AddInParameter(cmd, "@PasswordHash", DbType.String, PasswordHashing.HashPassword(login.Password));
                 IDataReader rd = db.ExecuteReader(cmd);
                 if(rd != null)

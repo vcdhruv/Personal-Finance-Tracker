@@ -1,11 +1,13 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Models
 {
-    public class LoginModel
+    public class SignUpModel
     {
         public int UserID { get; set; }
+        [Required(ErrorMessage = "UserName Is Required")]
+        [DisplayName("User Name")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Email Address Is Required"), EmailAddress]

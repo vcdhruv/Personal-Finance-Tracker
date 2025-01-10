@@ -40,10 +40,12 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             try
             {
                 MultipartFormDataContent formData = new MultipartFormDataContent();
-                formData.Add(new StringContent(login.UserName), "UserName");
+                formData.Add(new StringContent(login.Email), "Email");
                 formData.Add(new StringContent(login.Password), "Password");
+                formData.Add(new StringContent("Login_User"), "UserName");
+
                 HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/Login", formData);
-                if (response.IsSuccessStatusCode) 
+                if (response.IsSuccessStatusCode)
                 {
                     var responseBody = await response.Content.ReadAsStringAsync();
 
@@ -61,13 +63,46 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             }
             catch
             {
+                TempData["Error_Msg"] = "Incorrect UserName Or Password";
                 return RedirectToAction("Login");
+            }
+
+        }
+        #endregion
+
+        #region Sign Up Screen
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignUp(SignUpModel signUp)
+        {
+            MultipartFormDataContent signUpFormData = new MultipartFormDataContent();
+            signUpFormData.Add(new StringContent(signUp.UserName), "UserName");
+            signUpFormData.Add(new StringContent(signUp.Email), "Email");
+            signUpFormData.Add(new StringContent(signUp.Password), "Password");
+
+            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/SignUp", signUpFormData);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                var tokenResponse = JsonConvert.DeserializeObject<SignUpModel>(responseBody);
+                HttpContext.Session.SetString("Token", tokenResponse.Token);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
             }
         }
         #endregion
 
         #region Method To Generate Random Code For Email Verification
-        public string GenerateRandomCodeForEmail() 
+        public string GenerateRandomCodeForEmail()
         {
             string s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string random = "";
@@ -85,7 +120,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
         public async Task<JsonResult> SendEmail(EmailModel email)
         {
             MultipartFormDataContent content = new MultipartFormDataContent();
-            content.Add(new StringContent(email.Email),"Receptor" );
+            content.Add(new StringContent(email.Email), "Receptor");
             content.Add(new StringContent(email.Subject), "Subject");
             //content.Add(new StringContent(emailBody), "Body");
 
@@ -94,8 +129,8 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             htmlBodyContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/html");
             content.Add(htmlBodyContent, "Body");
 
-            HttpResponseMessage result = await _client.PostAsync($"{_client.BaseAddress}/User/Email",content);
-            if (result.IsSuccessStatusCode) 
+            HttpResponseMessage result = await _client.PostAsync($"{_client.BaseAddress}/User/Email", content);
+            if (result.IsSuccessStatusCode)
             {
                 return Json(new { success = true });
             }
@@ -128,7 +163,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             // Generate the random verification code
             string verificationCode = GenerateRandomCodeForEmail();
             HttpContext.Session.SetString("Receptor_Email", receptor_email);
-            HttpContext.Session.SetString("VerificationCode",verificationCode);
+            HttpContext.Session.SetString("VerificationCode", verificationCode);
 
             // Prepare the email body with HTML content
             string emailBody = $@"
@@ -203,8 +238,8 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
             content.Add(new StringContent(cng_password.Password), "PasswordHash");
             content.Add(new StringContent(HttpContext.Session.GetString("Receptor_Email").ToString()), "Email");
 
-            HttpResponseMessage response = await _client.PutAsync($"{_client.BaseAddress}/User/ChangePassword",content);
-            if (response.IsSuccessStatusCode) 
+            HttpResponseMessage response = await _client.PutAsync($"{_client.BaseAddress}/User/ChangePassword", content);
+            if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("PasswordChangedSuccessfully");
             }
