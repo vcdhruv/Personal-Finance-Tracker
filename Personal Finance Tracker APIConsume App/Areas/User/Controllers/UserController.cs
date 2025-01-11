@@ -44,6 +44,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                 formData.Add(new StringContent(login.Password), "Password");
                 formData.Add(new StringContent("Login_User"), "UserName");
 
+
                 HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/User/Login", formData);
                 if (response.IsSuccessStatusCode)
                 {
@@ -54,7 +55,7 @@ namespace Personal_Finance_Tracker_APIConsume_App.Areas.User.Controllers
                     HttpContext.Session.SetString("UserName", tokenResponse.UserName);
                     HttpContext.Session.SetString("Email", tokenResponse.Email);
                     HttpContext.Session.SetString("UserID", tokenResponse.UserID.ToString());
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Transaction", new { area = "Transaction" });
                 }
                 else
                 {

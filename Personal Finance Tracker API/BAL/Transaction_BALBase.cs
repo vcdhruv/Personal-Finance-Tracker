@@ -6,10 +6,18 @@ namespace Personal_Finance_Tracker_API.BAL
     public class Transaction_BALBase
     {
         #region Get All Transactions Of Specific User
-        public List<TransactionModel> GetAllTransactions(int UserID)
+        public List<TransactionModel> GetAllTransactions(int UserID, string? Type = null, string? Category = null, DateTime? StartDate = null, DateTime? EndDate = null)
         {
             Transaction_DALBase transactions = new Transaction_DALBase();
-            return transactions.GetAllTransactions(UserID);
+            return transactions.GetAllTransactions(UserID, Type, Category, StartDate, EndDate);
+        }
+        #endregion
+
+        #region Get Transaction Of Specific User By Transaction ID
+        public TransactionModel GetTransactionByID(int TransactionID,int UserID)
+        {
+            Transaction_DALBase transactions = new Transaction_DALBase();
+            return transactions.GetTransactionByID(TransactionID,UserID);
         }
         #endregion
 
@@ -22,10 +30,10 @@ namespace Personal_Finance_Tracker_API.BAL
         #endregion
 
         #region Update Transaction Of Specific User
-        public bool UpdateTransaction(TransactionModel transaction,int UserID, int TransactionID)
+        public bool UpdateTransaction(TransactionModel transaction)
         {
             Transaction_DALBase transaction_ = new Transaction_DALBase();
-            return transaction_.UpdateTransaction(transaction,UserID,TransactionID);
+            return transaction_.UpdateTransaction(transaction);
         }
         #endregion
 

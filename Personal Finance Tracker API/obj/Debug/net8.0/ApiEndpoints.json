@@ -238,16 +238,6 @@
         "Name": "Description",
         "Type": "System.String",
         "IsRequired": false
-      },
-      {
-        "Name": "UserID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "TransactionID",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -255,7 +245,7 @@
   {
     "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
     "Method": "DeleteTransaction",
-    "RelativePath": "api/Transaction",
+    "RelativePath": "api/Transaction/{TransactionID}/transaction/{UserID}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -263,12 +253,12 @@
       {
         "Name": "UserID",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "TransactionID",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -281,6 +271,47 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "Type",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StartDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "EndDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Personal_Finance_Tracker_API.Controllers.TransactionController",
+    "Method": "GetTransactionByID",
+    "RelativePath": "api/Transaction/{UserID}/transaction/{TransactionID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TransactionID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
       {
         "Name": "UserID",
         "Type": "System.Int32",

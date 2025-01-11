@@ -26,6 +26,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Flutter App\Personal-Finance-Tracker\Personal Finance Tracker APIConsume App
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/Transaction/Views/Transaction/AddNewTransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVHJhbnNhY3Rpb25cVmlld3NcVHJhbnNhY3Rpb25cQWRkTmV3VHJhbnNhY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/Transaction/Views/Transaction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVHJhbnNhY3Rpb25cVmlld3NcVHJhbnNhY3Rpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/Transaction/Views/Transaction/UpdateTransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVHJhbnNhY3Rpb25cVmlld3NcVHJhbnNhY3Rpb25cVXBkYXRlVHJhbnNhY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/Transaction/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVHJhbnNhY3Rpb25cX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Flutter App/Personal-Finance-Tracker/Personal Finance Tracker APIConsume App/Areas/User/Views/User/ChangePasswordPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclxWaWV3c1xVc2VyXENoYW5nZVBhc3N3b3JkUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
